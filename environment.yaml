@@ -76,4 +76,4 @@ dependencies:
   - xz=5.4.2=h5eee18b_0
   - zlib=1.2.13=h5eee18b_0
   - zstd=1.5.5=hc292b87_0
-prefix: /home/dingshuo/anaconda3/envs/Pytorch
+prefix: /home/dingshuo/anaconda3/envs/CDN4
