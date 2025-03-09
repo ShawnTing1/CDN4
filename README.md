@@ -15,7 +15,7 @@ This repository contains the code release for [CDN4: A cross-view Deep Nearest N
 ## Code environment
 
 - You can set up a new conda environment by running the following command:
-```
+```bash
 conda env create -f environment.yml
 conda activate CDN4
 ```
@@ -35,7 +35,7 @@ The datasets (i.e., CUB, meta-iNat and tiered meta-iNat) can be downloaded from 
 ## Train and test
 
 The train/test configurations, TensorBoard logs, and saved checkpoints are organized in the following format:
-```
+```bash
 CUB_FSL_CDN4_larger_way_K5_94.583/
 ├── 2023-11-17-12:00
 │   ├── events.out.tfevents.1700222406.amax
@@ -59,12 +59,25 @@ Download the snapshot files from [Google Drive](https://drive.google.com/drive/u
 
 ### Meta-training
 
+We'll start by putting the snapshots of our downloaded Aircraft, CUB-200-2011 and other data sets into the snapshots folder in our code.
+
+```bash
+cp -r ./CUB-200-2011/  ./snapshots/
+```
+
 We manually create the target checkpoint folders and copy (or soft link) the pretrained-model (e.g., `snapshots/ResNet-12/pretrainer/miniImagenet_FRN_pre/miniimagenet-e0_pre.pth`) to it:
-```
+
+```bash
 mkdir ./checkpoint/xxx/
-cp ./snapshots/ResNet-12/pretrainer/miniImagenet_FRN_pre/miniimagenet-e0_pre.pth ./checkpoint/xxx/
-bash ./fast_train_test.sh ./configs/miniImagenet/ResNet-12/xxx.yaml 0
 ```
+```bash
+cp ./snapshots/ResNet-12/pretrainer/miniImagenet_FRN_pre/miniimagenet-e0_pre.pth ./checkpoint/xxx/
+```
+
+```bash
+bash ./fast_train_test.sh ./snapshots/CUB-200-2011/ResNet-12/CUB_FSL_DN4_larger_way_K5_92.506/DN4_larger_way_K5.yaml
+```
+
 where `xxx` is the prefix of `.yaml` file and `0` indicates the GPU device number.
 
 ### Reference
