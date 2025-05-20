@@ -80,6 +80,17 @@ bash ./fast_train_test.sh ./snapshots/CUB-200-2011/ResNet-12/CUB_FSL_DN4_larger_
 
 where `xxx` is the prefix of `.yaml` file and `0` indicates the GPU device number.
 
+### Evaluate the meta-trained model
+
+For example, CDN4 5-way 1-shot ResNet-12 CUB-200-2011 GPU 0
+
+```bash
+python engines/evaluator.py \
+--cfg snapshots/CUB-200-2011/CUB_FSL_CDN4_larger_way_86.474/DN4_larger_way.yaml \
+-c snapshots/CUB-200-2011/CUB_FSL_CDN4_larger_way_86.474/ebest_10way_1shot.pth \
+--device 0
+```
+
 ### Reference
 
 Thanks to [LouieYang](https://github.com/LouieYang/MCL) for the codebase.
